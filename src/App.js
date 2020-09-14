@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter } from "./component/index";
 
-function Home() {
+function Home(props) {
+  console.log(props);
   return <span>home</span>;
 }
 
@@ -33,7 +35,7 @@ function App() {
         <p>
           <Link to="/none">none</Link>
         </p>
-        <br/>
+        <br />
         <Switch>
           <Route exact path="/" component={Home}></Route>
           <Route path="/detail" component={Detail}></Route>
