@@ -8,5 +8,9 @@ export function Link({ to, children }) {
     e.stopPropagation();
     history.push(to);
   };
-  return <a onClick={handleClick}>{children}</a>;
+  return (
+    <a href={to} onClick={handleClick}>
+      {children}
+    </a>
+  );
 }

@@ -1,13 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import { BrowserRouter } from "./component/index";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "./component/index";
 
 function Home(props) {
   console.log(props);
   return <span>home</span>;
 }
 
-function Detail() {
+function Detail(props) {
+  console.log(props);
   return <span>detail</span>;
 }
 
@@ -36,12 +37,12 @@ function App() {
           <Link to="/none">none</Link>
         </p>
         <br />
-        <Switch>
-          <Route exact path="/" component={Home}></Route>
-          <Route path="/detail" component={Detail}></Route>
-          <Route path="/info" component={Info}></Route>
-          <Route component={No}></Route>
-        </Switch>
+        {/* <Switch> */}
+        <Route exact path="/" component={Home}></Route>
+        <Route path="/detail" component={Detail}></Route>
+        <Route path="/info" component={Info}></Route>
+        <Route component={No}></Route>
+        {/* </Switch> */}
       </Router>
     </div>
   );
