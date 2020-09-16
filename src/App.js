@@ -1,10 +1,15 @@
 import React from "react";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "./component/index";
+import { BrowserRouter as Router, Route, Switch, Link } from "./component/index";
 
 function Home(props) {
   console.log(props);
   return <span>home</span>;
+}
+
+function HomeR(props) {
+  console.log(props);
+  return <span>HomeR</span>;
 }
 
 function Detail(props) {
@@ -12,11 +17,13 @@ function Detail(props) {
   return <span>detail</span>;
 }
 
-function Info() {
+function Info(props) {
+  console.log(props);
   return <span>info</span>;
 }
 
-function No() {
+function No(props) {
+  console.log(props);
   return <div>404</div>;
 }
 
@@ -38,7 +45,7 @@ function App() {
         </p>
         <br />
         {/* <Switch> */}
-        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/" children={() => <HomeR></HomeR>} component={Home}></Route>
         <Route path="/detail" component={Detail}></Route>
         <Route path="/info" component={Info}></Route>
         <Route component={No}></Route>

@@ -3,9 +3,13 @@ import { RouterContext } from "./context";
 import { matchPath } from "react-router-dom";
 
 export function Route(props) {
-  const { path, component, children, render } = props;
+  const { path, component, children, render, computerMatch } = props;
   const context = useContext(RouterContext);
-  const match = path ? matchPath(context.location.pathname, props) : context.match;
+  const match = computerMatch
+    ? computerMatch
+    : path
+    ? matchPath(context.location.pathname, props)
+    : context.match;
   props = {
     ...context,
     match,
