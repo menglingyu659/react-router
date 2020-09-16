@@ -14,17 +14,21 @@ export function Route(props) {
     ...context,
     match,
   };
-  return match
-    ? children
-      ? typeof children === "function"
+  return (
+    <RouterContext.Provider value={props}>
+      {match
+        ? children
+          ? typeof children === "function"
+            ? children(props)
+            : children
+          : component
+          ? React.createElement(component, props)
+          : render
+          ? render(props)
+          : null
+        : typeof children === "function"
         ? children(props)
-        : children
-      : component
-      ? React.createElement(component, props)
-      : render
-      ? render(props)
-      : null
-    : typeof children === "function"
-    ? children(props)
-    : null;
+        : null}
+    </RouterContext.Provider>
+  );
 }

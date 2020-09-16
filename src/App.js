@@ -1,16 +1,44 @@
 import React from "react";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Switch, Link } from "./component/index";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link,
+//   useRouteMatch,
+//   useParams,
+//   useLocation,
+//   useHistory,
+//   withRouter,
+// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams,
+  useLocation,
+  useHistory,
+  withRouter,
+} from "./component";
 
 function Home(props) {
   console.log(props);
   return <span>home</span>;
 }
 
-function HomeR(props) {
+const HomeR = withRouter(function (props) {
+  // const history = useHistory();
+  // const location = useLocation();
+  // const match = useRouteMatch();
+  // const params = useParams();
+  // console.log(history);
+  // console.log(location);
+  // console.log(match);
+  // console.log(params);
   console.log(props);
   return <span>HomeR</span>;
-}
+});
 
 function Detail(props) {
   console.log(props);
@@ -32,7 +60,7 @@ function App() {
     <div>
       <Router>
         <p>
-          <Link to="/">Home</Link>
+          <Link to="/123">Home</Link>
         </p>
         <p>
           <Link to="/detail">Detail</Link>
@@ -44,12 +72,12 @@ function App() {
           <Link to="/none">none</Link>
         </p>
         <br />
-        {/* <Switch> */}
-        <Route exact path="/" children={() => <HomeR></HomeR>} component={Home}></Route>
-        <Route path="/detail" component={Detail}></Route>
-        <Route path="/info" component={Info}></Route>
-        <Route component={No}></Route>
-        {/* </Switch> */}
+        <Switch>
+          <Route exact path="/:id" children={() => <HomeR a="a"></HomeR>} component={Home}></Route>
+          <Route path="/detail" component={Detail}></Route>
+          <Route path="/info" component={Info}></Route>
+          <Route component={No}></Route>
+        </Switch>
       </Router>
     </div>
   );
