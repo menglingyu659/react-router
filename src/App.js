@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import {
 //   BrowserRouter as Router,
 //   Switch,
@@ -9,6 +9,8 @@ import React from "react";
 //   useLocation,
 //   useHistory,
 //   withRouter,
+//   Redirect,
+//   Prompt,
 // } from "react-router-dom";
 import {
   BrowserRouter as Router,
@@ -20,6 +22,8 @@ import {
   useLocation,
   useHistory,
   withRouter,
+  Redirect,
+  Prompt,
 } from "./component";
 
 function Home(props) {
@@ -42,12 +46,35 @@ const HomeR = withRouter(function (props) {
 
 function Detail(props) {
   console.log(props);
-  return <span>detail</span>;
+  const [flag, setFlag] = useState(true);
+  return (
+    <span>
+      detail
+      <Prompt when={flag} message={'113'}></Prompt>
+      <button
+        onClick={() => {
+          setFlag(!flag);
+        }}
+      >
+        change flag
+      </button>
+      {`${flag}`}
+    </span>
+  );
 }
 
 function Info(props) {
   console.log(props);
-  return <span>info</span>;
+  return (
+    <span>
+      info
+      <Redirect
+        to={{
+          pathname: "/9",
+        }}
+      ></Redirect>
+    </span>
+  );
 }
 
 function No(props) {
@@ -73,9 +100,14 @@ function App() {
         </p>
         <br />
         <Switch>
-          <Route exact path="/:id" children={() => <HomeR a="a"></HomeR>} component={Home}></Route>
           <Route path="/detail" component={Detail}></Route>
           <Route path="/info" component={Info}></Route>
+          <Route
+            exact
+            path="/:id"
+            // children={() => <HomeR a="a"></HomeR>}
+            component={Home}
+          ></Route>
           <Route component={No}></Route>
         </Switch>
       </Router>

@@ -4,3 +4,5 @@ export { Route } from "./Route";
 export { Switch } from "./Switch";
 export { useRouteMatch, useParams, useLocation, useHistory } from "./hooks";
 export { withRouter } from "./withRouter";
+export { Redirect } from "./Redirect";
+export { Prompt } from "./Prompt";
